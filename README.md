@@ -7,3 +7,4 @@ This piece of software is a python script that has the ability to do various mat
 this piece of software is not exam approved and I am not responsible for any penalties for using it in any manner, including, but not limited to, school exams, tests, etc.
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/4f4ec6c263e645589607cea94aebeeff)](https://www.codacy.com/manual/one-and-only/numworks-math-libs?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=one-and-only/numworks-math-libs&amp;utm_campaign=Badge_Grade)
+![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/one-and-only/numworks-math-libs?color=yellow&include_prereleases&label=latest)
