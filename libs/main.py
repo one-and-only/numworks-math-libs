@@ -81,3 +81,12 @@ def solve_linear_func(func_name, m, x, b):
     mx = (int(m)*int(x))
     y = int(mx) + int(b)
     print(func_name+"("+str(x)+")= "+str(y))
+
+def find_domain_range_equation(equation):
+    if 'x' or 'X' in equation:
+        print('Infinite domain and range')
+
+def find_domain_range_ordered(xs, ys):
+    print(xs)
+    print(ys)
+    exit()
