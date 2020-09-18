@@ -3,7 +3,7 @@ from decimal import Decimal
 from math import sqrt
 
 def RepresentsFloat(s):
-    try: 
+    try:
         float(s)
         return True
     except ValueError:
