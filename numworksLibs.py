@@ -1,5 +1,13 @@
+import main
 from decimal import Decimal
 from math import sqrt
+
+def RepresentsFloat(s):
+    try:
+        float(s)
+        return True
+    except ValueError:
+        return False
 
 def gcd(a, b):
     while b:
@@ -87,6 +95,55 @@ def find_domain_range_equation(equation):
         print('Infinite domain and range')
 
 def find_domain_range_ordered(xs, ys):
-    print(xs)
-    print(ys)
+    #print(xs)
+    #print(ys)
+    sd = ", "
+    sr = ", "
+    xsu = []
+    ysu = []
+    for i in xs:
+        if i not in xsu:
+            xsu.append(i)
+    for i in ys:
+        if i not in ysu:
+            ysu.append(i)
+    sd = sd.join(xsu)
+    domainstr = "Domain: "+sd
+    print(domainstr)
+    sr = sr.join(ysu)
+    rangestr = "Range: "+sr
+    print(rangestr)
     exit()
+
+def get_ordered_pair(ordered_pair_num, xs, ys):
+    x = 0
+    y = 0
+    while (x is not None and y is not None):
+        x = input("x for point #"+str(ordered_pair_num)+"(sbm): ")
+        if (x == ""):
+            print("Got empty, quitting...")
+            main.page1()
+        elif (x != ""):
+            if (RepresentsFloat(x)):
+                print("Loading...")
+            elif (x == "sbm"):
+                if ((xs == []) or (ys == [])):
+                    print("Submission can't be empty")
+                    get_ordered_pair(ordered_pair_num, xs, ys)
+                find_domain_range_ordered(xs, ys)
+            elif (any(c.isalpha() for c in x)):
+                print("Must be a number!")
+                get_ordered_pair(ordered_pair_num, xs, ys)
+        y = input("y for point #"+str(ordered_pair_num)+": ")
+        if (y == ""):
+            print("y cannot be empty")
+            get_ordered_pair(ordered_pair_num, xs, ys)
+        elif (y != ""):
+            if (RepresentsFloat(y)):
+                print("loading...")
+                ordered_pair_num += 1
+            elif (any(c.isalpha() for c in x)):
+                print("Must be a number!")
+                get_ordered_pair(ordered_pair_num, xs, ys)
+        xs += x
+        ys += y
