@@ -13,6 +13,22 @@ def gcd(a, b):
         a, b = b, a % b
     return a
 
+def clean_num(reduced_num):
+    culprit = '.0'
+    reduced_num_str = str(reduced_num)
+    if reduced_num_str.endswith(culprit):
+        reduced_num_clean = reduced_num_str[:-(len(culprit))]
+        reduced_num = int(reduced_num_clean)
+    return reduced_num
+
+def clean_den(reduced_den):
+    culprit = '.0'
+    reduced_den_str = str(reduced_den)
+    if reduced_den_str.endswith(culprit):
+        reduced_den_clean = reduced_den_str[:-(len(culprit))]
+        reduced_den = int(reduced_den_clean)
+    return reduced_den
+
 def drop_one_denom(reduced_num):
     print(str(reduced_num))
 
@@ -26,20 +42,13 @@ def simplify_fraction(numer, denom):
     # Note that reduced_den > 0 as documented in the gcd function.
 
     if common_divisor == 1:
-        culprit = '.0'
-        reduced_den_str = str(-reduced_den)
-        reduced_num_str = str(reduced_num)
-        if reduced_den_str.endswith(culprit):
-            reduced_den_clean = reduced_den_str[:-(len(culprit))]
-            reduced_den = int(reduced_den_clean)
-        if reduced_num_str.endswith(culprit):
-            reduced_num_clean = reduced_num_str[:-(len(culprit))]
-            reduced_num = int(reduced_num_clean)
-            
-        if reduced_den == -1:
+        reduced_num = clean_num(reduced_num)
+        reduced_den - clean_den(reduced_den)
+
+        if reduced_den == 1.0:
             drop_one_denom(reduced_num)
         else:
-            print(str(reduced_num)+"/"+str(-reduced_den))
+            print(str(reduced_num)+"/"+str(reduced_den))
     else:
         # Bunch of nonsense to make sure denominator is negative if possible
         if (reduced_den > denom):
@@ -51,15 +60,8 @@ def simplify_fraction(numer, denom):
                 print(str(reduced_num)+"/"+str(reduced_den))
         else:
 
-            culprit = '.0'
-            reduced_den_str = str(-reduced_den)
-            reduced_num_str = str(reduced_num)
-            if reduced_den_str.endswith(culprit):
-                reduced_den_clean = reduced_den_str[:-(len(culprit))]
-                reduced_den = int(reduced_den_clean)
-            if reduced_num_str.endswith(culprit):
-                reduced_num_clean = reduced_num_str[:-(len(culprit))]
-                reduced_num = int(reduced_num_clean)
+            reduced_num = clean_num(reduced_num)
+            reduced_den = clean_den(reduced_den)
             
             if reduced_den == -1:
                 drop_one_denom(reduced_num)
