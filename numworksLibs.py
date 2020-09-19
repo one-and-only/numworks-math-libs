@@ -35,6 +35,7 @@ def simplify_fraction(numer, denom):
         if reduced_num_str.endswith(culprit):
             reduced_num_clean = reduced_num_str[:-(len(culprit))]
             reduced_num = int(reduced_num_clean)
+            
         if reduced_den == -1:
             drop_one_denom(reduced_num)
         else:
@@ -56,12 +57,6 @@ def simplify_fraction(numer, denom):
             if reduced_den_str.endswith(culprit):
                 reduced_den_clean = reduced_den_str[:-(len(culprit))]
                 reduced_den = int(reduced_den_clean)
-            if reduced_num_str.endswith(culprit):
-                reduced_num_clean = reduced_num_str[:-(len(culprit))]
-                reduced_num = int(reduced_num_clean)
-
-            culprit = '.0'
-            reduced_num_str = str(reduced_num)
             if reduced_num_str.endswith(culprit):
                 reduced_num_clean = reduced_num_str[:-(len(culprit))]
                 reduced_num = int(reduced_num_clean)
