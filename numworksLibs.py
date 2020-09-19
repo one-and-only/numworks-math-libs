@@ -31,9 +31,21 @@ def simplify_fraction(numer, denom):
                 print(str(-reduced_num)+"/"+str(-reduced_den))
             else:
                 print("Debug divisor other than")
+
                 print(str(reduced_num)+"/"+str(reduced_den))
         else:
-            print(str(reduced_num)+"/"+str(reduced_den))
+
+            culprit = '.0'
+            reduced_den_str = str(-reduced_den)
+            reduced_num_str = str(reduced_num)
+            if reduced_den_str.endswith(culprit):
+                reduced_den_clean = reduced_den_str[:-(len(culprit))]
+                reduced_den = int(reduced_den_clean)
+            if reduced_num_str.endswith(culprit):
+                reduced_num_clean = reduced_num_str[:-(len(culprit))]
+                reduced_num = int(reduced_num_clean)
+
+            print(str(reduced_num)+"/"+str(-reduced_den))
 
 def simplify_fraction_quadratic(numer, denom):
     if denom == 0:
