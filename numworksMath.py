@@ -1,1 +1,2 @@
-from main import page1
+import main
+main.page1()

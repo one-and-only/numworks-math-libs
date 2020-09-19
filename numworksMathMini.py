@@ -1,1 +1,0 @@
-from mainMini import page1
