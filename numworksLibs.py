@@ -13,6 +13,9 @@ def gcd(a, b):
         a, b = b, a % b
     return a
 
+def drop_one_denom(reduced_num):
+    print(str(reduced_num))
+
 def simplify_fraction(numer, denom):
     if denom == 0:
         return "Division by 0 - result undefined"
@@ -24,11 +27,17 @@ def simplify_fraction(numer, denom):
 
     if common_divisor == 1:
         culprit = '.0'
+        reduced_den_str = str(-reduced_den)
         reduced_num_str = str(reduced_num)
+        if reduced_den_str.endswith(culprit):
+            reduced_den_clean = reduced_den_str[:-(len(culprit))]
+            reduced_den = int(reduced_den_clean)
         if reduced_num_str.endswith(culprit):
             reduced_num_clean = reduced_num_str[:-(len(culprit))]
             reduced_num = int(reduced_num_clean)
-        print(str(reduced_num))
+        if reduced_den == '-1':
+            drop_one_denom(reduced_num)
+        print(str(reduced_num)+"/"+str(-reduced_den))
     else:
         # Bunch of nonsense to make sure denominator is negative if possible
         if (reduced_den > denom):
@@ -55,7 +64,11 @@ def simplify_fraction(numer, denom):
             if reduced_num_str.endswith(culprit):
                 reduced_num_clean = reduced_num_str[:-(len(culprit))]
                 reduced_num = int(reduced_num_clean)
-            print(str(reduced_num))
+            
+            if reduced_den == -1:
+                drop_one_denom(reduced_num)
+            else:
+                print(str(reduced_num)+"/"+str(-reduced_den))
 
 def simplify_fraction_quadratic(numer, denom):
     if denom == 0:
