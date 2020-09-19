@@ -94,8 +94,6 @@ def find_domain_range_equation(equation):
         print('Infinite domain and range')
 
 def find_domain_range_ordered(xs, ys):
-    #print(xs)
-    #print(ys)
     sd = ", "
     sr = ", "
     xsu = []
