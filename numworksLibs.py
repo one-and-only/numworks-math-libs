@@ -35,9 +35,10 @@ def simplify_fraction(numer, denom):
         if reduced_num_str.endswith(culprit):
             reduced_num_clean = reduced_num_str[:-(len(culprit))]
             reduced_num = int(reduced_num_clean)
-        if reduced_den == '-1':
+        if reduced_den == -1:
             drop_one_denom(reduced_num)
-        print(str(reduced_num)+"/"+str(-reduced_den))
+        else:
+            print(str(reduced_num)+"/"+str(-reduced_den))
     else:
         # Bunch of nonsense to make sure denominator is negative if possible
         if (reduced_den > denom):
