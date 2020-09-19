@@ -1,5 +1,4 @@
 import main
-from decimal import Decimal
 from math import sqrt
 
 def RepresentsFloat(s):
@@ -24,15 +23,15 @@ def simplify_fraction(numer, denom):
     # Note that reduced_den > 0 as documented in the gcd function.
 
     if common_divisor == 1:
-        print(str(Decimal(numer).normalize())+"/"+str(Decimal(denom).normalize()))
+        print(str(numer)+"/"+str(denom))
     else:
         # Bunch of nonsense to make sure denominator is negative if possible
         if (reduced_den > denom):
             if (reduced_den * reduced_num < 0):
-                print(str(Decimal(-reduced_num).normalize())+"/"+str(Decimal(-reduced_den).normalize()))
+                print(str(-reduced_num)+"/"+str(-reduced_den))
             else:
                 print("Debug divisor other than")
-                print(str(Decimal(reduced_num).normalize())+"/"+str(Decimal(reduced_den).normalize()))
+                print(str(reduced_num)+"/"+str(reduced_den))
         else:
             print(str(reduced_num)+"/"+str(reduced_den))
 
