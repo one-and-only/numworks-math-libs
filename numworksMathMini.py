@@ -1,1 +1,2 @@
-from mainMini import page1
+import mainMini
+mainMini.page1()

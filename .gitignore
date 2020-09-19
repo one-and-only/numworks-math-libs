@@ -4,7 +4,7 @@
 # Useless Mac File
 .DS_Store
 
-# Byte-compiled / optimized / DLL files
+# optimized / DLL files
 __pycache__/
 *.py[od]
 *$py.class

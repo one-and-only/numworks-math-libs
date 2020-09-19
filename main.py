@@ -32,4 +32,3 @@ def page1():
         quit()
     else:
         print("You entered an invalid option")
-page1()
