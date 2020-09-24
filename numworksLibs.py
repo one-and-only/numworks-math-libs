@@ -59,10 +59,8 @@ def simplify_fraction(numer, denom):
 
                 print(str(reduced_num)+"/"+str(reduced_den))
         else:
-
             reduced_num = clean_num(reduced_num)
             reduced_den = clean_den(reduced_den)
-            
             if reduced_den == 1:
                 drop_one_denom(reduced_num)
             else:
