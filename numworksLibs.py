@@ -1,5 +1,4 @@
 import main
-from decimal import Decimal
 from math import sqrt
 
 def RepresentsFloat(s):
@@ -14,6 +13,25 @@ def gcd(a, b):
         a, b = b, a % b
     return a
 
+def clean_num(reduced_num):
+    culprit = '.0'
+    reduced_num_str = str(reduced_num)
+    if reduced_num_str.endswith(culprit):
+        reduced_num_clean = reduced_num_str[:-(len(culprit))]
+        reduced_num = int(reduced_num_clean)
+    return reduced_num
+
+def clean_den(reduced_den):
+    culprit = '.0'
+    reduced_den_str = str(reduced_den)
+    if reduced_den_str.endswith(culprit):
+        reduced_den_clean = reduced_den_str[:-(len(culprit))]
+        reduced_den = int(reduced_den_clean)
+    return reduced_den
+
+def drop_one_denom(reduced_num):
+    print(str(reduced_num))
+
 def simplify_fraction(numer, denom):
     if denom == 0:
         return "Division by 0 - result undefined"
@@ -24,17 +42,29 @@ def simplify_fraction(numer, denom):
     # Note that reduced_den > 0 as documented in the gcd function.
 
     if common_divisor == 1:
-        print(str(Decimal(numer).normalize())+"/"+str(Decimal(denom).normalize()))
+        reduced_num = clean_num(reduced_num)
+        reduced_den = clean_den(reduced_den)
+
+        if reduced_den == 1.0:
+            drop_one_denom(reduced_num)
+        else:
+            print(str(reduced_num)+"/"+str(reduced_den))
     else:
         # Bunch of nonsense to make sure denominator is negative if possible
         if (reduced_den > denom):
             if (reduced_den * reduced_num < 0):
-                print(str(Decimal(-reduced_num).normalize())+"/"+str(Decimal(-reduced_den).normalize()))
+                print(str(-reduced_num)+"/"+str(-reduced_den))
             else:
                 print("Debug divisor other than")
-                print(str(Decimal(reduced_num).normalize())+"/"+str(Decimal(reduced_den).normalize()))
+
+                print(str(reduced_num)+"/"+str(reduced_den))
         else:
-            print(str(reduced_num)+"/"+str(reduced_den))
+            reduced_num = clean_num(reduced_num)
+            reduced_den = clean_den(reduced_den)
+            if reduced_den == 1:
+                drop_one_denom(reduced_num)
+            else:
+                print(str(reduced_num)+"/"+str(reduced_den))
 
 def simplify_fraction_quadratic(numer, denom):
     if denom == 0:
@@ -95,8 +125,6 @@ def find_domain_range_equation(equation):
         print('Infinite domain and range')
 
 def find_domain_range_ordered(xs, ys):
-    #print(xs)
-    #print(ys)
     sd = ", "
     sr = ", "
     xsu = []

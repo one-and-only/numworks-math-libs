@@ -1,6 +1,5 @@
 _A='Division by 0 - result undefined'
 import mainMini
-from decimal import Decimal
 from math import sqrt
 def RepresentsFloat(s):
 	try:float(s);return True
@@ -8,15 +7,30 @@ def RepresentsFloat(s):
 def gcd(a,b):
 	while b:a,b=b,a%b
 	return a
+def clean_num(reduced_num):
+	culprit='.0';reduced_num_str=str(reduced_num)
+	if reduced_num_str.endswith(culprit):reduced_num_clean=reduced_num_str[:-len(culprit)];reduced_num=int(reduced_num_clean)
+	return reduced_num
+def clean_den(reduced_den):
+	culprit='.0';reduced_den_str=str(reduced_den)
+	if reduced_den_str.endswith(culprit):reduced_den_clean=reduced_den_str[:-len(culprit)];reduced_den=int(reduced_den_clean)
+	return reduced_den
+def drop_one_denom(reduced_num):print(str(reduced_num))
 def simplify_fraction(numer,denom):
 	A='/'
 	if denom==0:return _A
 	common_divisor=gcd(numer,denom);reduced_num,reduced_den=numer/common_divisor,denom/common_divisor
-	if common_divisor==1:print(str(Decimal(numer).normalize())+A+str(Decimal(denom).normalize()))
+	if common_divisor==1:
+		reduced_num=clean_num(reduced_num);reduced_den=clean_den(reduced_den)
+		if reduced_den==1.0:drop_one_denom(reduced_num)
+		else:print(str(reduced_num)+A+str(reduced_den))
 	elif reduced_den>denom:
-		if reduced_den*reduced_num<0:print(str(Decimal(-reduced_num).normalize())+A+str(Decimal(-reduced_den).normalize()))
-		else:print('Debug divisor other than');print(str(Decimal(reduced_num).normalize())+A+str(Decimal(reduced_den).normalize()))
-	else:print(str(reduced_num)+A+str(reduced_den))
+		if reduced_den*reduced_num<0:print(str(-reduced_num)+A+str(-reduced_den))
+		else:print('Debug divisor other than');print(str(reduced_num)+A+str(reduced_den))
+	else:
+		reduced_num=clean_num(reduced_num);reduced_den=clean_den(reduced_den)
+		if reduced_den==1:drop_one_denom(reduced_num)
+		else:print(str(reduced_num)+A+str(reduced_den))
 def simplify_fraction_quadratic(numer,denom):
 	if denom==0:return _A
 	common_divisor=gcd(numer,denom);reduced_num,reduced_den=numer/common_divisor,denom/common_divisor
