@@ -43,7 +43,7 @@ def simplify_fraction(numer, denom):
 
     if common_divisor == 1:
         reduced_num = clean_num(reduced_num)
-        reduced_den - clean_den(reduced_den)
+        reduced_den = clean_den(reduced_den)
 
         if reduced_den == 1.0:
             drop_one_denom(reduced_num)
@@ -63,10 +63,10 @@ def simplify_fraction(numer, denom):
             reduced_num = clean_num(reduced_num)
             reduced_den = clean_den(reduced_den)
             
-            if reduced_den == -1:
+            if reduced_den == 1:
                 drop_one_denom(reduced_num)
             else:
-                print(str(reduced_num)+"/"+str(-reduced_den))
+                print(str(reduced_num)+"/"+str(reduced_den))
 
 def simplify_fraction_quadratic(numer, denom):
     if denom == 0:
