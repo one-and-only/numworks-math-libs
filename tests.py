@@ -9,6 +9,8 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual(numworksLibs.simplify_fraction(99, 33), '3')
     def test_simplify_fraction_03(self):
         self.assertEqual(numworksLibs.simplify_fraction(5, 1), '5')
+    def test_simplify_fraction_04(self):
+        self.assertEqual(numworksLibs.simplify_fraction(5, 0), 'Division by 0 - result undefined')
     def test_factor_quadratic_01(self):
         self.assertEqual(numworksLibs.quadratic_function(1, 5, 4), '(1x+1)(1x+4)')
     def test_factor_quadratic_02(self):
