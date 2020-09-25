@@ -123,7 +123,6 @@ def quadratic_function(a,b,c):
         # if the part under the sqrt is negative, you have a solution with i
         print("Solutions are imaginary")
         return("Solutions are imaginary")
-    return
 
 def solve_linear_func(func_name, m, x, b):
     mx = (int(m)*int(x))
