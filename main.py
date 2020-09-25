@@ -1,5 +1,7 @@
 import numworksLibs
 
+
+
 def page1():
     prgrmchoice = input("Select From One of the Programs:\n1. Simplify a Fraction (Numerical)\n2. Factor a Quadratic Function\n3. Solve Y in Linear Functions\n4. Find D:{}, R:{} of Function\n\"q\" to quit\nYour Choice: ")
     if (prgrmchoice == "1"):
