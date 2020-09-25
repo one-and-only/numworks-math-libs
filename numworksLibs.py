@@ -31,6 +31,7 @@ def clean_den(reduced_den):
 
 def drop_one_denom(reduced_num):
     print(str(reduced_num))
+    return(str(reduced_num))
 
 def simplify_fraction(numer, denom):
     if denom == 0:
@@ -45,26 +46,32 @@ def simplify_fraction(numer, denom):
         reduced_num = clean_num(reduced_num)
         reduced_den = clean_den(reduced_den)
 
-        if reduced_den == 1.0:
-            drop_one_denom(reduced_num)
+        if reduced_den == 1:
+            testsVar = drop_one_denom(reduced_num)
+            return testsVar
         else:
             print(str(reduced_num)+"/"+str(reduced_den))
+            return(str(reduced_num)+"/"+str(reduced_den))
     else:
         # Bunch of nonsense to make sure denominator is negative if possible
         if (reduced_den > denom):
             if (reduced_den * reduced_num < 0):
                 print(str(-reduced_num)+"/"+str(-reduced_den))
+                return(str(-reduced_num)+"/"+str(-reduced_den))
             else:
                 print("Debug divisor other than")
 
                 print(str(reduced_num)+"/"+str(reduced_den))
+                return(str(reduced_num)+"/"+str(reduced_den))
         else:
             reduced_num = clean_num(reduced_num)
             reduced_den = clean_den(reduced_den)
             if reduced_den == 1:
-                drop_one_denom(reduced_num)
+                testsVar = drop_one_denom(reduced_num)
+                return testsVar
             else:
                 print(str(reduced_num)+"/"+str(reduced_den))
+                return(str(reduced_num)+"/"+str(reduced_den))
 
 def simplify_fraction_quadratic(numer, denom):
     if denom == 0:
@@ -99,6 +106,7 @@ def quadratic_function(a,b,c):
         if ((num1 > a) or (num2 > a)):
             # simplify fraction will make too large of num and denom to try to make a sqrt work
             print("No factorization")
+            return("No factorization")
         else:
             # Getting ready to make the print look nice
             if (den1 > 0):
@@ -110,15 +118,18 @@ def quadratic_function(a,b,c):
             else:
                 sign2 = ""
             print("({}x{}{})({}x{}{})".format(int(num1),sign1,int(den1),int(num2),sign2,int(den2)))
+            return("({}x{}{})({}x{}{})".format(int(num1),sign1,int(den1),int(num2),sign2,int(den2)))
     else:
         # if the part under the sqrt is negative, you have a solution with i
         print("Solutions are imaginary")
+        return("Solutions are imaginary")
     return
 
 def solve_linear_func(func_name, m, x, b):
     mx = (int(m)*int(x))
     y = int(mx) + int(b)
     print(func_name+"("+str(x)+")= "+str(y))
+    return(func_name+"("+str(x)+")= "+str(y))
 
 def find_domain_range_equation(equation):
     if 'x' or 'X' in equation:
@@ -137,11 +148,10 @@ def find_domain_range_ordered(xs, ys):
             ysu.append(i)
     sd = sd.join(xsu)
     domainstr = "Domain: "+sd
-    print(domainstr)
     sr = sr.join(ysu)
     rangestr = "Range: "+sr
-    print(rangestr)
-    exit()
+    print(domainstr+"\n"+rangestr)
+    return(domainstr+"\n"+rangestr)
 
 def get_ordered_pair(ordered_pair_num, xs, ys):
     x = 0
@@ -152,13 +162,16 @@ def get_ordered_pair(ordered_pair_num, xs, ys):
             print("Got empty, quitting...")
             main.page1()
         elif (x != ""):
-            if (RepresentsFloat(x)):
-                print("Loading...")
-            elif (x == "sbm"):
+            if (x == "sbm"):
                 if ((xs == []) or (ys == [])):
                     print("Submission can't be empty")
                     get_ordered_pair(ordered_pair_num, xs, ys)
                 find_domain_range_ordered(xs, ys)
+                x = None
+                y = None
+                break
+            elif (RepresentsFloat(x)):
+                print("Loading...")
             elif (any(c.isalpha() for c in x)):
                 print("Must be a number!")
                 get_ordered_pair(ordered_pair_num, xs, ys)
