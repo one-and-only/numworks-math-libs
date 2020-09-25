@@ -19,5 +19,6 @@ jobs:
     - name: Run Tests
       run: |
         coverage run -m unittest tests.py -v
+        export CODACY_PROJECT_TOKEN=d6fab4d62ede4fb0915a6b055b4402b7
         bash <(curl -Ls https://coverage.codacy.com/get.sh) report
         
