@@ -25,6 +25,14 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual(numworksLibs.find_domain_range_ordered(['1', '3'], ['2', '4']), "Domain: 1, 3\nRange: 2, 4")
     def test_find_dr_ordered_pair_02(self):
         self.assertEqual(numworksLibs.find_domain_range_ordered(['1', '3', '3', '4'], ['2', '4', '2', '4']), "Domain: 1, 3, 4\nRange: 2, 4")
+    def test_represents_float_01(self):
+        self.assertTrue(numworksLibs.RepresentsFloat('4.9789'))
+    def test_represents_float_02(self):
+        self.assertTrue(numworksLibs.RepresentsFloat('9'))
+    def test_represents_float_03(self):
+        self.assertFalse(numworksLibs.RepresentsFloat('f'))
+    def test_represents_float_04(self):
+        self.assertFalse(numworksLibs.RepresentsFloat('fght'))
 
 if __name__ == '__main__':
     unittest.main()
