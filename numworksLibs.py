@@ -30,7 +30,6 @@ def clean_den(reduced_den):
     return reduced_den
 
 def drop_one_denom(reduced_num):
-    print(str(reduced_num))
     return(str(reduced_num))
 
 def simplify_fraction(numer, denom):
@@ -47,21 +46,16 @@ def simplify_fraction(numer, denom):
         reduced_den = clean_den(reduced_den)
 
         if reduced_den == 1:
-            testsVar = drop_one_denom(reduced_num)
-            return testsVar
+            answer = drop_one_denom(reduced_num)
+            return answer
         else:
-            print(str(reduced_num)+"/"+str(reduced_den))
             return(str(reduced_num)+"/"+str(reduced_den))
     else:
         # Bunch of nonsense to make sure denominator is negative if possible
         if (reduced_den > denom):
             if (reduced_den * reduced_num < 0):
-                print(str(-reduced_num)+"/"+str(-reduced_den))
                 return(str(-reduced_num)+"/"+str(-reduced_den))
             else:
-                print("Debug divisor other than")
-
-                print(str(reduced_num)+"/"+str(reduced_den))
                 return(str(reduced_num)+"/"+str(reduced_den))
         else:
             reduced_num = clean_num(reduced_num)
@@ -70,7 +64,6 @@ def simplify_fraction(numer, denom):
                 testsVar = drop_one_denom(reduced_num)
                 return testsVar
             else:
-                print(str(reduced_num)+"/"+str(reduced_den))
                 return(str(reduced_num)+"/"+str(reduced_den))
 
 def simplify_fraction_quadratic(numer, denom):
@@ -105,7 +98,6 @@ def quadratic_function(a,b,c):
         (num2,den2) = simplify_fraction_quadratic(a,mult2)
         if ((num1 > a) or (num2 > a)):
             # simplify fraction will make too large of num and denom to try to make a sqrt work
-            print("No factorization")
             return("No factorization")
         else:
             # Getting ready to make the print look nice
@@ -117,22 +109,19 @@ def quadratic_function(a,b,c):
                 sign2 = "+"
             else:
                 sign2 = ""
-            print("({}x{}{})({}x{}{})".format(int(num1),sign1,int(den1),int(num2),sign2,int(den2)))
             return("({}x{}{})({}x{}{})".format(int(num1),sign1,int(den1),int(num2),sign2,int(den2)))
     else:
         # if the part under the sqrt is negative, you have a solution with i
-        print("Solutions are imaginary")
         return("Solutions are imaginary")
 
 def solve_linear_func(func_name, m, x, b):
     mx = (int(m)*int(x))
     y = int(mx) + int(b)
-    print(func_name+"("+str(x)+")= "+str(y))
     return(func_name+"("+str(x)+")= "+str(y))
 
 def find_domain_range_equation(equation):
     if 'x' or 'X' in equation:
-        print('Infinite domain and range')
+        return('Infinite domain and range')
 
 def find_domain_range_ordered(xs, ys):
     sd = ", "
@@ -149,7 +138,6 @@ def find_domain_range_ordered(xs, ys):
     domainstr = "Domain: "+sd
     sr = sr.join(ysu)
     rangestr = "Range: "+sr
-    print(domainstr+"\n"+rangestr)
     return(domainstr+"\n"+rangestr)
 
 def get_ordered_pair(ordered_pair_num, xs, ys):
@@ -165,7 +153,7 @@ def get_ordered_pair(ordered_pair_num, xs, ys):
                 if ((xs == []) or (ys == [])):
                     print("Submission can't be empty")
                     get_ordered_pair(ordered_pair_num, xs, ys)
-                find_domain_range_ordered(xs, ys)
+                answer = find_domain_range_ordered(xs, ys)
                 x = None
                 y = None
                 break
@@ -187,3 +175,4 @@ def get_ordered_pair(ordered_pair_num, xs, ys):
                 get_ordered_pair(ordered_pair_num, xs, ys)
         xs += x
         ys += y
+    return answer
