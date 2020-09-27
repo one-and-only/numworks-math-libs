@@ -41,6 +41,7 @@ def page1():
         choice = input("Are you Solving a, b, or c?\n")
         answer = numworksLibs.solve_pythagorean(choice)
         print(choice+" ≈ "+str(answer))
+        return(choice+" ≈ "+str(answer))
     elif prgrmchoice == "q":
         print("Bye, see you soon!")
         quit()
