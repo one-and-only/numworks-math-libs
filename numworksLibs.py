@@ -176,3 +176,25 @@ def get_ordered_pair(ordered_pair_num, xs, ys):
         xs += x
         ys += y
     return answer
+
+def solve_pythagorean(solve_var):
+    if solve_var == "a":
+        b = input("What is your b?\n")
+        c = input("What is your c?\n")
+        cb2 = float(c)*float(c) - float(b)*float(b)
+        a = round(sqrt(cb2), 2)
+        return a
+    elif solve_var == "b":
+        a = input("What is your a?\n")
+        c = input("What is your c?\n")
+        ca2 = float(c)*float(c) - float(a)*float(a)
+        b = round(sqrt(ca2), 2)
+        return b
+    elif solve_var == "c":
+        a = input("What is your a?\n")
+        b = input("What is your b?\n")
+        ab2 = float(a)*int(a) + float(b)*float(b)
+        c = round(sqrt(ab2), 2)
+        return c
+    else:
+        print("Invalid Variable")
