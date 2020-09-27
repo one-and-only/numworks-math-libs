@@ -61,7 +61,7 @@ class TestStringMethods(unittest.TestCase):
         self.assertFalse(numworksLibs.RepresentsFloat('f'))
     def test_represents_float_04(self):
         self.assertFalse(numworksLibs.RepresentsFloat('fght'))
-    @unittest.mock.patch("builtins.input")    
+    @unittest.mock.patch("builtins.input")
     def test_solve_pythagorean_01(self, mocked_input):
         mocked_input.side_effect = ['5', 'a', '2', '7']
         self.assertEqual(main.page1(), 'a ≈ 6.71')
