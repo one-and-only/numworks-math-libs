@@ -45,10 +45,14 @@ class TestStringMethods(unittest.TestCase):
     def test_solve_linear_func_03(self, mocked_input):
         mocked_input.side_effect = ['3', 'a', '4', '4', '13']
         self.assertEqual(main.page1(), 'a(4)= 29')
-    def test_find_dr_ordered_pair_01(self):
-        self.assertEqual(numworksLibs.find_domain_range_ordered(['1', '3'], ['2', '4']), "Domain: 1, 3\nRange: 2, 4")
-    def test_find_dr_ordered_pair_02(self):
-        self.assertEqual(numworksLibs.find_domain_range_ordered(['1', '3', '3', '4'], ['2', '4', '2', '4']), "Domain: 1, 3, 4\nRange: 2, 4")
+    @unittest.mock.patch("builtins.input")
+    def test_find_dr_ordered_pair_01(self, mocked_input):
+        mocked_input.side_effect = ['4', '2', '1', '2', '3', '4', 'sbm']
+        self.assertEqual(main.page1(), 'Domain: 1, 3\nRange: 2, 4')
+    @unittest.mock.patch("builtins.input")
+    def test_find_dr_ordered_pair_02(self, mocked_input):
+        mocked_input.side_effect = ['4', '2', '1', '2', '3', '4', '3', '2', '4', '4', 'sbm']
+        self.assertEqual(main.page1(), 'Domain: 1, 3, 4\nRange: 2, 4')
     def test_represents_float_01(self):
         self.assertTrue(numworksLibs.RepresentsFloat('4.9789'))
     def test_represents_float_02(self):
